@@ -1,0 +1,39 @@
+/* App.module.css */
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+  margin: 100px auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.inputBox {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.sendBtn {
+  width: 100%;
+  padding: 12px;
+  background: #4a90e2;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sendBtn:hover {
+  background: #357ab8;
+}
