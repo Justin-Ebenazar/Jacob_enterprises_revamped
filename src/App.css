@@ -11,8 +11,52 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: #0f0f0f;
-  background-color: #f6f6f6;
+  --page-text: #0f0f0f;
+  --page-bg: #f6f6f6;
+  --link-color: #646cff;
+  --link-hover-color: #535bf2;
+  --input-text: #0f0f0f;
+  --input-bg: #ffffff;
+  --input-border-hover: #396cd8;
+
+  --form-bg-dark: #020817;
+  --form-bg-card: #08152f;
+  --form-primary: #8b5cf6;
+  --form-primary-light: #c4b5fd;
+  --form-text: #ffffff;
+  --form-text-muted: #94a3b8;
+  --form-border: #1e293b;
+  --form-success: #fb923c;
+  --form-glass: rgba(255, 255, 255, 0.05);
+
+  --home-bg-page: #f8f7ff;
+  --home-bg-card: #ffffff;
+  --home-bg-table: #ffffff;
+  --home-primary: #8b5cf6;
+  --home-primary-light: #ede9fe;
+  --home-success: #22c55e;
+  --home-success-light: #dcfce7;
+  --home-warning: #f59e0b;
+  --home-warning-light: #fef3c7;
+  --home-text-dark: #312e81;
+  --home-text-medium: #6d6a8d;
+  --home-text-light: #9a97b8;
+  --home-border: #ddd6fe;
+  --home-shadow: rgba(139, 92, 246, 0.08);
+
+  --spare-bg-main: #0b1220;
+  --spare-bg-card: #162447;
+  --spare-bg-input: #1e293b;
+  --spare-text-primary: #ffffff;
+  --spare-text-secondary: #94a3b8;
+  --spare-primary: #6366f1;
+  --spare-secondary: #3b82f6;
+  --spare-success: #4ade80;
+  --spare-warning: #f59e0b;
+  --spare-border: #243b68;
+
+  color: var(--page-text);
+  background-color: var(--page-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -48,12 +92,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--link-color);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: var(--link-hover-color);
 }
 
 h1 {
@@ -68,8 +112,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  color: #0f0f0f;
-  background-color: #ffffff;
+  color: var(--input-text);
+  background-color: var(--input-bg);
   transition: border-color 0.25s;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
@@ -79,10 +123,10 @@ button {
 }
 
 button:hover {
-  border-color: #396cd8;
+  border-color: var(--input-border-hover);
 }
 button:active {
-  border-color: #396cd8;
+  border-color: var(--input-border-hover);
   background-color: #e8e8e8;
 }
 
@@ -97,20 +141,24 @@ button {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
+    --page-text: #f6f6f6;
+    --page-bg: #2f2f2f;
+    --link-hover-color: #24c8db;
+    --input-text: #ffffff;
+    --input-bg: #0f0f0f98;
+    --input-border-hover: #0f0f0f69;
   }
 
   a:hover {
-    color: #24c8db;
+    color: var(--link-hover-color);
   }
 
   input,
   button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
+    color: var(--input-text);
+    background-color: var(--input-bg);
   }
   button:active {
-    background-color: #0f0f0f69;
+    background-color: var(--input-border-hover);
   }
 }

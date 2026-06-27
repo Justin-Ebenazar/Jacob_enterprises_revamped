@@ -1,0 +1,329 @@
+/* Global colors are defined in App.css */
+
+/* ==========================
+   PAGE LAYOUT
+========================== */
+
+.customer-container {
+  min-height: 100vh;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 30px;
+
+  background:
+    radial-gradient(circle at top left,
+      #1e1b4b,
+      #020817 60%);
+}
+
+/* ==========================
+   FORM CARD
+========================== */
+
+.customer-card {
+  flex: 1;
+
+  background: rgba(8, 21, 47, 0.85);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 24px;
+
+  padding: 20px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.customer-card h2 {
+  color: var(--form-text);
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--form-text-muted);
+  margin-bottom: 30px;
+}
+
+/* ==========================
+   FORM GRID
+========================== */
+
+.info-grid {
+  display: grid;
+
+  grid-template-columns: 170px 1fr;
+
+  gap: 15px 24px;
+}
+
+.info-grid span {
+  color: var(--form-text-muted);
+}
+
+.info-grid input {
+  background: transparent;
+
+  border: none;
+
+  border-bottom: 1px solid transparent;
+
+  color: white;
+
+  font-size: 18px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.info-grid input:hover,
+.info-grid input:focus {
+  border-bottom: 1px solid var(--form-primary);
+}
+
+/* ==========================
+   AUTO SAVE
+========================== */
+
+.autosave {
+  display: inline-block;
+
+  margin-top: 35px;
+
+  padding: 10px 16px;
+
+  border-radius: 20px;
+
+  background: rgba(251, 146, 60, 0.1);
+
+  color: var(--form-success);
+
+  font-size: 14px;
+}
+/* ==========================
+   NAV CARD
+========================== */
+
+.nav-card {
+  flex: 1;
+
+  background: rgba(8, 21, 47, 0.85);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,.05);
+
+  border-radius: 20px;
+
+  padding: 10px;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+.nav-card h3{
+  color:#f7f4fa;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+
+/* ==========================
+   GLASS NAV
+========================== */
+
+.glass-nav{
+
+  position:relative;
+
+  background:rgba(215, 7, 7, 0);
+
+  backdrop-filter:blur(20px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:20px;
+
+  overflow:hidden; 
+  padding:5px;
+}
+
+
+/* ==========================
+   NAV LIST
+========================== */
+
+.nav1{
+
+  display:flex;
+
+  list-style:none;
+
+  margin:0;
+  
+  padding:0;
+  
+  position:relative;
+
+  z-index:2;
+}
+
+
+/* ==========================
+   NAV ITEMS
+========================== */
+
+.nav1 li{
+
+  flex:1;
+
+  text-align:center;
+
+  padding:10px 5px;
+
+  border-radius:20px;
+
+  cursor:pointer;
+
+  color:white;
+
+  font-weight:600;
+
+  transition:.35s;
+
+  user-select:none;
+
+  position:relative;
+
+  z-index:2;
+  margin:0 4px;
+}
+
+.nav1 li:hover{
+
+  transform:translateY(-2px);
+
+  color:white;
+}
+
+
+/* ==========================
+   ACTIVE TAB
+========================== */
+
+.nav1 li.active{
+
+  color:white;
+}
+
+
+/* ==========================
+   SLIDER
+========================== */
+
+.nav-slider{
+
+  position:absolute;
+
+  top:8px;
+
+  left:0;
+
+  height:calc(100% - 16px);
+
+  border-radius:18px;
+
+  background:linear-gradient(
+      135deg,
+      #362266,
+      #a78bfa
+  );
+
+  box-shadow:
+      0 8px 25px rgba(139,92,246,.45);
+
+  transition:
+      left .58s cubic-bezier(.68,-0.6,.32,1.6),
+      width .58s ease;
+
+  z-index:1;
+}
+
+
+/* ==========================
+   FORM CONTENT
+========================== */
+
+.form-content{
+
+  margin-top:px;
+
+  animation:contentSlide .47s ease;
+}
+
+
+/* ==========================
+   CONTENT ANIMATION
+========================== */
+
+@keyframes contentSlide{
+
+  from{
+
+      opacity:0;
+
+      transform:translateY(20px);
+
+  }
+
+  to{
+
+      opacity:1;
+
+      transform:translateY(0);
+
+  }
+
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+  .customer-container{
+
+      flex-direction:column;
+
+  }
+
+  .nav1{
+
+      flex-direction:column;
+
+  }
+
+}
+.form-content{
+    margin-top:25px;
+    animation:fadeSlide .35s ease;
+}
+
+@keyframes fadeSlide{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}

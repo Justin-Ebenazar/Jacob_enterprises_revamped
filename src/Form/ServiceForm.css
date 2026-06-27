@@ -1,0 +1,512 @@
+/* ===================================================
+   SERVICE FORM CARD
+=================================================== */
+
+.tab-content{
+    animation:fadeSlide .4s ease;
+}
+
+.service_table_fan,
+.service_table_motor,
+.service_table_powertools{
+
+    width:97%;
+
+    /* margin-top:20px; */
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:18px;
+
+    padding:10px;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18);
+}
+
+
+/* ===================================================
+   TABLE
+=================================================== */
+
+.service-table{
+
+    width:95%;
+
+    border-collapse:separate;
+
+    border-spacing:0 15px;
+
+}
+
+
+/* ===================================================
+   REMOVE PURPLE TITLE BAR
+=================================================== */
+
+.form-title{
+
+    background:transparent;
+
+    color:#ffffff;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    padding:0 0 15px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+
+/* ===================================================
+   LABELS
+=================================================== */
+
+.service-table td{
+
+    color:#dfc2c2;
+
+    font-size:17px;
+
+    vertical-align:middle;
+
+}
+
+.service-table td:nth-child(1),
+.service-table td:nth-child(3){
+
+    width:150px;
+
+    font-weight:550;
+
+    color:#80838c;
+
+}
+
+
+/* ===================================================
+   PRODUCT ID
+=================================================== */
+
+.id{
+
+    color:#8b5cf6;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin:0;
+
+}
+
+/* ==========================================
+   INPUTS & SELECTS
+========================================== */
+
+.service-table input,
+.service-table select {
+
+    width: 110px;
+    height: 46px;
+
+    padding: 0 15px;
+
+    border: 1px solid transparent;
+
+    outline: none;
+
+    border-radius: 10px;
+
+    background: #141c33;
+
+    color: white;
+
+    font-size: 15px;
+
+    transition: all .3s ease;
+}
+
+/* Placeholder */
+
+.service-table input::placeholder {
+    color: #7d8597;
+}
+
+/* Hover Effect */
+
+.service-table input:hover,
+.service-table select:hover {
+
+    border-color: rgba(139, 92, 246, .6);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(139, 92, 246, .18);
+
+}
+
+/* Focus Effect */
+
+.service-table input:focus,
+.service-table select:focus {
+
+    border-color: #8b5cf6;
+
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, .18);
+
+    transform: translateY(-2px);
+
+}
+
+
+
+/* ===================================================
+   SELECT
+=================================================== */
+
+select{
+
+    cursor:pointer;
+
+}
+
+
+/* ===================================================
+   SUBMIT
+=================================================== */
+
+#service-footer{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:20px;
+
+}
+
+.submit{
+
+    width:220px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #6343ac,
+        #a78bfa
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.submit:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(139,92,246,.4);
+
+}
+
+
+/* ===================================================
+   ROW HOVER
+=================================================== */
+
+.service-table tr{
+
+    transition:.25s;
+
+}
+
+.service-table tr:hover{
+
+    background:rgba(255,255,255,.015);
+
+}
+
+
+/* ===================================================
+   DATE INPUT
+=================================================== */
+
+input[type="date"]{
+
+    color:white;
+
+}
+.service-table input[type="color"]{
+
+    width:40px;
+
+    height:40px;
+
+    padding:3px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#141c33;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.service-table input[type="color"]:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 15px rgba(139,92,246,.4);
+
+}
+
+/* ===================================================
+   NUMBER INPUT
+=================================================== */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+
+    opacity:1;
+
+}
+
+
+/* ===================================================
+   MOBILE
+=================================================== */
+
+@media(max-width:900px){
+
+.service-table,
+.service-table tbody,
+.service-table tr,
+.service-table td{
+
+    display:block;
+
+    width:100%;
+
+}
+
+.service-table td{
+
+    padding:8px 0;
+
+}
+
+.service-table td:nth-child(1),
+.service-table td:nth-child(3){
+
+    margin-top:10px;
+
+}
+
+}
+
+
+/* ===================================================
+   ANIMATION
+=================================================== */
+
+@keyframes fadeSlide{
+
+from{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+}
+
+to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+}
+
+/* ===============================
+   MOTOR FORM ONLY
+================================= */
+
+.motor-form{
+    padding:10px 5px;
+}
+
+.motor-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0 15px;
+}
+
+/* Labels */
+
+.motor-table td:nth-child(1),
+.motor-table td:nth-child(3){
+
+    width:10px;
+
+    color:#82828a;
+
+    font-size:15px;
+
+    font-weight:550;
+
+    vertical-align:middle;
+}
+
+/* Value columns */
+
+.motor-table td:nth-child(2),
+.motor-table td:nth-child(4){
+
+    width:60px;
+}
+
+/* Product ID */
+
+.motor-table .id{
+
+    color:#8b5cf6;
+
+    font-size:30px !important;
+
+    font-weight:bold;
+
+    margin:0;
+}
+
+/* Inputs */
+
+.motor-table input,
+.motor-table select{
+
+    width:200px;
+
+    height:40px;
+
+    padding:0 16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#1a2035d8;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+/* Hover */
+
+.motor-table input:hover,
+.motor-table select:hover,
+.motor-table input:focus,
+.motor-table select:focus{
+
+    border:1px solid #8b5cf6;
+
+    box-shadow:0 0 12px rgba(139,92,246,.35);
+}
+
+/* HP Row */
+
+.motor-table td div{
+
+    display:flex;
+
+    align-items:center;
+
+    /* gap:12px; */
+}
+
+/* HP Dropdown */
+
+.motor-table select{
+
+    width:85px !important;
+}
+
+/* Custom HP */
+
+.motor-table td div input{
+
+    width:55px !important;
+
+    text-align:center;
+}
+
+/* Color Picker */
+
+.motor-table input[type="color"]{
+
+    width:40px;
+
+    height:40px;
+
+    padding:2px;
+
+    cursor:pointer;
+
+    border-radius:8px;
+}
+
+/* Advance */
+
+.motor-table input[type="number"]{
+
+    width:120px;
+}
+
+/* Delivery Challan */
+
+.motor-table tr:last-child input{
+
+    width:220px;
+}
+
+/* Submit */
+
+.motor-form #service-footer{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:20px;
+}
