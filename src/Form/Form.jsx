@@ -83,21 +83,21 @@ const Form = () => {
               className={activeTab === "fan" ? "active" : ""}
               onClick={() => setActiveTab("fan")}
             >
-              Fan
+              Tab1
             </li>
 
             <li
               className={activeTab === "motor" ? "active" : ""}
               onClick={() => setActiveTab("motor")}
             >
-              Motor
+              Tab2
             </li>
 
             <li
               className={activeTab === "power-tools" ? "active" : ""}
               onClick={() => setActiveTab("power-tools")}
             >
-              Power Tools
+              Tab3
             </li>
           </ul>
         </nav>

@@ -1,0 +1,27 @@
+
+
+.fab{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:white;
+    background-color:#5716c9;
+    transition:.35s;
+    position:fixed;
+    bottom:40px;
+    right:85px;
+    z-index:1000;
+}
+
+.fab:hover{
+    background-color: #9d6bff;
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.45);
+}

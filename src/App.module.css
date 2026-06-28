@@ -1,39 +1,17 @@
-/* App.module.css */
-.container {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 350px;
-  margin: 100px auto;
-  font-family: "Segoe UI", sans-serif;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  transition: all 0.3s ease-in-out;
 }
 
-.title {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.inputBox {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.sendBtn {
-  width: 100%;
-  padding: 12px;
-  background: #4a90e2;
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.sendBtn:hover {
-  background: #357ab8;
+.app{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: #711c1c;
 }

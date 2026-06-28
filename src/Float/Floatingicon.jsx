@@ -1,37 +1,21 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import { FaPlus } from "react-icons/fa6";
-import "./Floatingicon.css";
+import styles from "./Floatingicon.module.css"; // ✅ CSS Module import
 
-const Floatingicon = () => {
+const Floatingicon = ({ switcher, themes }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="floating-menu">
-
-      {open && (
-        <div className="floating-links">
-
-          <NavLink to="/">Home</NavLink>
-
-          <NavLink to="/form">Service Form</NavLink>
-
-          <NavLink to="/spares">Spare Sell</NavLink>
-
-          <NavLink to="/reports">Reports</NavLink>
-
-        </div>
-      )}
-
-      <button
-        className={`fab ${open ? "open" : ""}`}
-        onClick={() => setOpen(!open)}
-      >
-        {open ? <RxCross2 /> : <FaPlus />}
-      </button>
-
-    </div>
+    <button
+      className={`${styles.fab} ${open ? styles.open : ""}`} 
+      onClick={() => {
+        setOpen(!open);
+        switcher(open ? themes.light : themes.dark);
+      }}
+    >
+      {open ? <RxCross2 /> : <FaPlus size={15}/>}
+    </button>
   );
 };
 
