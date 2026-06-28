@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./Form.css";
+import formstyle from "./Form.module.css";
 
 import Fan from "./Fan";
 import Motor from "./Motor";
@@ -27,91 +27,93 @@ const Form = () => {
   }, [activeTab]);
 
   return (
-    <div className="customer-container">
-      {/* Left Form Card */}
-      <div className="customer-card">
-        <h2>Customer Information</h2>
+	<div className={formstyle.modalOverlay}>
+		<div className={formstyle.formContainer}>
+			<div className={formstyle.formHeader}>
+				this is header
+			</div>
+			<div className={formstyle.formContent}>
+				{/* Left Form Card */}
+				<div className={formstyle.customerCard}>
+				<h2>Customer Information</h2>
 
-        <p className="subtitle">
-          Click any field and edit directly. No edit mode, no save button.
-        </p>
+				<p className={formstyle.subtitle}>
+					Click any field and edit directly. No edit mode, no save button.
+				</p>
 
-        <div className="info-grid">
-          <span>Customer Name</span>
-          <input type="text" defaultValue="Arun Kumar" />
+				<div className={formstyle.infoGrid}>
+					<span>Customer Name</span>
+					<input type="text" defaultValue="Arun Kumar" />
 
-          <span>Mobile Number</span>
-          <input type="text" defaultValue="9876543210" />
+					<span>Mobile Number</span>
+					<input type="text" defaultValue="9876543210" />
 
-          <span>Machine</span>
-          <input type="text" defaultValue="Motor" />
+					<span>Machine</span>
+					<input type="text" defaultValue="Motor" />
 
-          <span>Motor HP</span>
-          <input type="text" defaultValue="5 HP" />
+					<span>Motor HP</span>
+					<input type="text" defaultValue="5 HP" />
 
-          <span>Delivery Challan</span>
-          <input type="text" defaultValue="DC-101" />
+					<span>Delivery Challan</span>
+					<input type="text" defaultValue="DC-101" />
 
-          <span>Missing Parts</span>
-          <input type="text" defaultValue="Rotor, Bearing" />
+					<span>Missing Parts</span>
+					<input type="text" defaultValue="Rotor, Bearing" />
 
-          <span>Advance Amount</span>
-          <input type="text" defaultValue="₹2000" />
-        </div>
+					<span>Advance Amount</span>
+					<input type="text" defaultValue="₹2000" />
+				</div>
 
-        <div className="autosave">
-          ● Auto-save enabled
-        </div>
-      </div>
+				<div className={formstyle.autosave}>
+					● Auto-save enabled
+				</div>
+				</div>
 
-      {/* Right Side */}
-      <aside className="nav-card">
-        <h3>Machine Categories</h3>
+				{/* Right Side */}
+				<aside className={formstyle.navCard}>
+					<h3>Machine Categories</h3>
 
-        <nav className="glass-nav" ref={navRef}>
-          {/* Sliding Highlighter */}
-          <div
-            className="nav-slider"
-            style={{
-              left: sliderStyle.left,
-              width: sliderStyle.width,
-            }}
-          ></div>
+					<nav className={formstyle.glassNav} ref={navRef}>
+						{/* Sliding Highlighter */}
+						<div
+						className={formstyle.navSlider}
+						style={{
+							left: sliderStyle.left,
+							width: sliderStyle.width,
+						}}
+						></div>
 
-          <ul className="nav1">
-            <li
-              className={activeTab === "fan" ? "active" : ""}
-              onClick={() => setActiveTab("fan")}
-            >
-              Tab1
-            </li>
+						<ul className={formstyle.nav1}>
+							<li
+								className={activeTab === "fan" ? "active" : ""}
+								onClick={() => setActiveTab("fan")}
+							>
+								Fan
+							</li>
 
-            <li
-              className={activeTab === "motor" ? "active" : ""}
-              onClick={() => setActiveTab("motor")}
-            >
-              Tab2
-            </li>
+							<li
+								className={activeTab === "motor" ? "active" : ""}
+								onClick={() => setActiveTab("motor")}
+							>
+								Motor
+							</li>
 
-            <li
-              className={activeTab === "power-tools" ? "active" : ""}
-              onClick={() => setActiveTab("power-tools")}
-            >
-              Tab3
-            </li>
-          </ul>
-        </nav>
+							<li className={activeTab === "power-tools" ? "active" : ""} onClick={() => setActiveTab("power-tools")}>
+								Power Tools
+							</li>
+						</ul>
+					</nav>
 
-        {/* Form Content */}
-        <section key={activeTab} className="form-content">
-          {activeTab === "fan" && <Fan />}
-
-          {activeTab === "motor" && <Motor />}
-
-          {activeTab === "power-tools" && <PowerTools />}
-        </section>
-      </aside>
-    </div>
+					{/* Form Content */}
+					<section key={activeTab} className="form-content">
+						{activeTab === "fan" && <Fan />}
+						{activeTab === "motor" && <Motor />}
+						{activeTab === "power-tools" && <PowerTools />}
+					</section>
+				</aside>
+			</div>
+		</div>
+	</div>
   );
 };
 

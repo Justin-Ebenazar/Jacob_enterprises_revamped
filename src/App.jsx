@@ -24,6 +24,9 @@ const App = () => {
 		'--primary-font-color': theme.primaryfontcolor,
 		'--secondary-font-color': theme.secondaryfontcolor,
 		'--tertiary-color': theme.tertiary_color,
+		'--pie-color-1': theme.piecolor1,
+		'--pie-color-2': theme.piecolor2,
+		'--pie-color-3': theme.piecolor3
 	}
 
 	useEffect(() => {
@@ -37,13 +40,12 @@ const App = () => {
     <div className={style.app}>
 		<Header />
 		<BrowserRouter>
-			{/* <Home /> */}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				{/* <Route path="/form" element={<Form />} />
 				<Route path="/floatingicon" element={<Floatingicon />} /> */}
 			</Routes>
-			{/* <Form /> */}
+			<Form />
 			<Floatingicon switcher={setTheme} themes={{ light: themes.light, dark: themes.dark }} />
 		</BrowserRouter>
     </div>

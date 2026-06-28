@@ -10,6 +10,9 @@ const light = {
     iconcolor: "#363636",
     iconhovercolor: "#e6e6e6",
     accent_color: "#5716c9",
+    piecolor1: "#e91e63",
+    piecolor2: "#22c55e",
+    piecolor3: "#2563eb"
 };
 
 const dark = {
@@ -24,6 +27,9 @@ const dark = {
     iconcolor: "#ffffff",
     iconhovercolor: "#494949",
     accent_color: "#5716c9",
+    piecolor1: "#f472b6", // pink
+    piecolor2: "#4ade80", // green
+    piecolor3: "#60a5fa"
 };
 
 export default { light, dark };
