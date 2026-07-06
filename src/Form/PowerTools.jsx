@@ -26,7 +26,8 @@ const PowerTools = () => {
                     {"P" + info}
                   </h1>
                 </td>
-
+              </tr>
+              <tr>
                 <td>Company:</td>
                 <td>
                   <select name="COMPANY">
@@ -38,18 +39,8 @@ const PowerTools = () => {
                   </select>
                 </td>
               </tr>
-
               <tr>
-                <td>Customer Name:</td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Customer Name"
-                    name="NAME"
-                    required
-                    autoComplete="off"
-                  />
-                </td>
+
 
                 <td>Model Size:</td>
                 <td>
@@ -63,18 +54,6 @@ const PowerTools = () => {
               </tr>
 
               <tr>
-                <td>Mobile No:</td>
-                <td>
-                  <input
-                    type="tel"
-                    placeholder="Contact"
-                    name="MOBILE"
-                    required
-                    pattern="\d{10}"
-                    title="Enter a valid 10-digit mobile number"
-                    autoComplete="off"
-                  />
-                </td>
 
                 <td>Missing Parts:</td>
                 <td>
@@ -92,10 +71,6 @@ const PowerTools = () => {
                   <input type="color" name="COLOR" />
                 </td>
 
-                <td>Date Given:</td>
-                <td>
-                  <input type="date" name="DATEOFGIVEN" />
-                </td>
               </tr>
 
               <tr>
@@ -109,30 +84,8 @@ const PowerTools = () => {
                   </select>
                 </td>
 
-                <td>Advance:</td>
-                <td>
-                  <input
-                    type="number"
-                    name="ADVANCE"
-                    defaultValue={0}
-                  />
-                </td>
               </tr>
 
-              <tr>
-                <td>Challan No:</td>
-                <td>
-                  <input
-                    type="number"
-                    placeholder="Delivery Challan"
-                    autoComplete="off"
-                    name="CD"
-                  />
-                </td>
-
-                <td></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
 

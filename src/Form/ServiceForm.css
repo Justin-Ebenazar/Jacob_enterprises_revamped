@@ -510,3 +510,13 @@ to{
 
     margin-top:20px;
 }
+
+.tab-content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    height: 100%;
+    background-color :var(--theme-color);
+    overflow: hidden;
+}

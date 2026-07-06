@@ -5,7 +5,7 @@ const Fan = () => {
   const info = 101; // Sample Product ID
 
   return (
-    <div className="tab-content">
+    // <div className="machine-form-master" >
       <form action="/fan_submit" className="tab-content" method="post">
         <div className="service_table_fan">
           <table className="service-table">
@@ -23,7 +23,8 @@ const Fan = () => {
                     {"F" + info}
                   </h1>
                 </td>
-
+              </tr>
+              <tr>
                 <td>Fan Type:</td>
                 <td>
                   <select name="FANTYPE" className="dropbtn">
@@ -40,43 +41,11 @@ const Fan = () => {
               </tr>
 
               <tr>
-                <td>Customer Name:</td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Customer Name"
-                    name="NAME"
-                    required
-                    autoComplete="off"
-                  />
-                </td>
 
                 <td>Missing Parts:</td>
 
                 <td>
                   <input type="text" name="MISSINGPARTS" />
-                </td>
-              </tr>
-
-              <tr>
-                <td>Mobile No:</td>
-
-                <td>
-                  <input
-                    type="tel"
-                    placeholder="Contact"
-                    name="MOBILE"
-                    required
-                    autoComplete="off"
-                    pattern="\d{10}"
-                    title="Enter a valid 10-digit number"
-                  />
-                </td>
-
-                <td>Date Given:</td>
-
-                <td>
-                  <input type="date" name="DATEOFGIVEN" />
                 </td>
               </tr>
 
@@ -87,46 +56,14 @@ const Fan = () => {
                   <input type="color" name="COLOR" />
                 </td>
 
-                <td>Advance:</td>
-
-                <td>
-                  <input
-                    type="number"
-                    placeholder="Enter amount"
-                    name="ADVANCE"
-                    defaultValue={0}
-                  />
-                </td>
               </tr>
 
-              <tr>
-                <td>Challan No:</td>
-
-                <td>
-                  <input
-                    type="number"
-                    placeholder="Delivery Challan"
-                    autoComplete="off"
-                    name="CD"
-                  />
-                </td>
-
-                <td></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
 
-          <div id="service-footer">
-            <input
-              type="submit"
-              value="Submit"
-              className="submit"
-            />
-          </div>
         </div>
       </form>
-    </div>
+    // </div>
   );
 };
 

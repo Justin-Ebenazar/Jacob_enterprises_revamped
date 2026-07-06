@@ -23,7 +23,8 @@ const Motor = () => {
                     {"M" + info}
                   </h1>
                 </td>
-
+            </tr>
+            <tr>
                 <td>Motor HP:</td>
 
                 <td>
@@ -60,21 +61,13 @@ const Motor = () => {
                         padding: "4px",
                       }}
                     />
+
                   </div>
                 </td>
               </tr>
+ 
 
               <tr>
-                <td>Customer Name:</td>
-                <td>
-                  <input
-                    type="text"
-                    name="NAME"
-                    placeholder="Customer Name"
-                    required
-                    autoComplete="off"
-                  />
-                </td>
 
                 <td>Missing Parts:</td>
                 <td>
@@ -87,54 +80,13 @@ const Motor = () => {
               </tr>
 
               <tr>
-                <td>Mobile No:</td>
-                <td>
-                  <input
-                    type="tel"
-                    name="MOBILE"
-                    placeholder="Contact"
-                    required
-                    autoComplete="off"
-                    pattern="\d{10}"
-                    title="Enter a valid 10-digit mobile number"
-                  />
-                </td>
-
-                <td>Date Given:</td>
-                <td>
-                  <input type="date" name="DATEOFGIVEN" />
-                </td>
-              </tr>
-
-              <tr>
                 <td>Color:</td>
                 <td>
                   <input type="color" name="COLOR" />
                 </td>
 
-                <td>Advance:</td>
-                <td>
-                  <input
-                    type="number"
-                    name="ADVANCE"
-                    defaultValue={0}
-                  />
-                </td>
               </tr>
 
-              <tr>
-                <td>Delivery Challan:</td>
-                <td>
-                  <input
-                    type="text"
-                    name="DELIVERY_CHALLAN"
-                    defaultValue="-"
-                  />
-                </td>
-
-                <td></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
 
