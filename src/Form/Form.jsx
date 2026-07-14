@@ -5,6 +5,16 @@ import Fan from "./Fan";
 import Motor from "./Motor";
 import PowerTools from "./PowerTools";
 import { MdAddAPhoto } from "react-icons/md";
+import square from "../assets/square.png";
+import portrait from "../assets/portrait.jpg";
+import wide from "../assets/wide.jpg";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
+import { FaMinus } from "react-icons/fa";
+import { MdPerson } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { TbUser } from "react-icons/tb";
+import IconWaveCanvas from "./IconWave";
 
 const Form = () => {
   const [activeTab, setActiveTab] = useState("fan");
@@ -31,16 +41,23 @@ const Form = () => {
 	<dialog className={formstyle.modalOverlay}>
 		<div className={formstyle.formContainer}>
 			<div className={formstyle.formHeader}>
-				this is header
+				<div className={formstyle.formControls}>
+					<MdClose className={formstyle.closeIcon} />
+					<FaMinus className={formstyle.minimizeIcon} />
+				</div>
+				Service Form
 			</div>
 			<div className={formstyle.formContent}>
 				{/* Left Form Card */}
 				<div className={formstyle.customerCard}>
 					<div className={formstyle.customerCardHeader}>
-						<h3>Customer Information</h3>
+						{/* <h3>Customer Information</h3> */}
 					</div>
 
 					<div className={formstyle.infoGrid}>
+						<div className={formstyle.customerIconHolder}>
+							<FaUser className={formstyle.customerIcon}/>
+						</div>
 						<div className={formstyle.inputHolder}>
 							<input type="text" placeholder=" " className={formstyle.infoInput} id="cname" />
 							<span for="cname" >Customer Name</span>
@@ -58,10 +75,11 @@ const Form = () => {
 							<span for="advance">Advance Amount</span>
 						</div>
 						<div className={formstyle.inputHolder}>
-							<span>Date Given :</span>
-							<CustomDatePicker />
+							{/* <CustomDatePicker className={formstyle.infoInput} /> */}
+							<input type="date" className={formstyle.infoInput} id="date" />
 						</div>
 					</div>
+					<IconWaveCanvas iconType={activeTab} />
 				</div>
 
 				{/* Right Side */}
@@ -103,21 +121,31 @@ const Form = () => {
 						<div className={formstyle["image-container"]}>
 							
 							<div className={formstyle["image-view"]}>
-								Add your images
+								{/* <img src={square} alt="Machine" className={formstyle["machine-image"]} /> */}
+								<img src={portrait} alt="Portrait" className={formstyle["machine-image"]} />
+								{/* <img src={wide} alt="Wide" className={formstyle["machine-image"]} /> */}
 								<MdAddAPhoto className={formstyle["camera-icon"]} />
 							</div>
 							
 							<div className={formstyle["image-thumbnails"]}>
-								image controls	
+								<img src={square} alt="Machine" className={formstyle["thumbnail-image"]} />
+								<img src={square} alt="Machine" className={formstyle["thumbnail-image"]} />
+								<img src={square} alt="Machine" className={formstyle["thumbnail-image"]} />
+								<img src={square} alt="Machine" className={formstyle["thumbnail-image"]} />
+								<img src={square} alt="Machine" className={formstyle["thumbnail-image"]} />
+								<img src={square} alt="Machine" className={formstyle["thumbnail-image"]} />
 							</div>
 							<div className={formstyle["image-controls"]}>
-								image controls	
+								<FaChevronLeft className={formstyle["nav-button"]}/>
+								    1 of 20     
+								<FaChevronRight className={formstyle["nav-button"]}/>
 							</div>
 						</div>
 						<div className={formstyle["machine-specific-content"]}>
 							{activeTab === "fan" && <Fan />}
 							{activeTab === "motor" && <Motor />}
 							{activeTab === "power-tools" && <PowerTools />}
+							<button className={formstyle.submitButton} type="submit">Submit</button>
 						</div>
 					</section>
 				</aside>

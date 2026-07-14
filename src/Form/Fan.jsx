@@ -7,59 +7,32 @@ const Fan = () => {
   return (
     // <div className="machine-form-master" >
       <form action="/fan_submit" className="tab-content" method="post">
+        <div className="form-specific-header">
+          <h3>Fan Details Entry</h3>
+          <p> {"F" + info}</p>
+        </div>
         <div className="service_table_fan">
-          <table className="service-table">
-            <tbody>
-              <tr>
-                <th className="form-title" colSpan={4}>
-                  Fan Details Entry
-                </th>
-              </tr>
+          <div className="service-form">
+            <div className="form-group">
+              <label htmlFor="FANTYPE" className="form-label">Fan Type:</label>
+              <select name="FANTYPE" id="FANTYPE" className="dropbtn">
+                <option value="Ceiling Fan">Ceiling Fan</option>
+                <option value="Table Fan">Table Fan</option>
+                <option value="Almonard Pedestal">Almonard Pedestal</option>
+                <option value="Almonard Wall Mounting">Almonard Wall</option>
+              </select>
+            </div>
 
-              <tr>
-                <td>Product ID:</td>
-                <td>
-                  <h1 className="id" style={{ fontSize: "20px" }}>
-                    {"F" + info}
-                  </h1>
-                </td>
-              </tr>
-              <tr>
-                <td>Fan Type:</td>
-                <td>
-                  <select name="FANTYPE" className="dropbtn">
-                    <option value="Ceiling Fan">Ceiling Fan</option>
-                    <option value="Table Fan">Table Fan</option>
-                    <option value="Almonard Pedestal">
-                      Almonard Pedestal
-                    </option>
-                    <option value="Almonard Wall Mounting">
-                      Almonard Wall
-                    </option>
-                  </select>
-                </td>
-              </tr>
+            <div className="form-group">
+              <label htmlFor="MISSINGPARTS" className="form-label">Missing Parts:</label>
+              <input type="text" name="MISSINGPARTS" id="MISSINGPARTS" />
+            </div>
 
-              <tr>
-
-                <td>Missing Parts:</td>
-
-                <td>
-                  <input type="text" name="MISSINGPARTS" />
-                </td>
-              </tr>
-
-              <tr>
-                <td>Color:</td>
-
-                <td>
-                  <input type="color" name="COLOR" />
-                </td>
-
-              </tr>
-
-            </tbody>
-          </table>
+            <div className="form-group">
+              <label htmlFor="COLOR" className="form-label">Color:</label>
+              <input type="color" name="COLOR" id="COLOR" />
+            </div>
+          </div>
 
         </div>
       </form>

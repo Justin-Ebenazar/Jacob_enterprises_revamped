@@ -4,101 +4,61 @@ const PowerTools = () => {
   const info = 101; // Sample Product ID
 
   return (
-    <div className="tab-content">
-      <form
-        action="/powertool_submit"
-        className="tab-content"
-        method="post"
-      >
+    <form action="/powertool_submit" className="tab-content" method="post">
+        <div className="form-specific-header">
+          <h3>Fan Details Entry</h3>
+          <p> {"P" + info}</p>
+        </div>
         <div className="service_table_powertools">
-          <table className="service-table">
-            <tbody>
-              <tr>
-                <th className="form-title" colSpan={4}>
-                  Power Tools Details Entry
-                </th>
-              </tr>
+          <div className="service-form">
+            <div className="form-group">
+              <label htmlFor="COMPANY" className="form-label">Company:</label>
+              <select name="COMPANY" id="COMPANY" className="dropbtn">
+                <option>Bosch</option>
+                <option>Makita</option>
+                <option>Dewalt</option>
+                <option>Hitachi</option>
+                <option>China Made</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="POWERTOOLS" className="form-label">Power Tool Type:</label>
+              <select name="POWERTOOLS" id="POWERTOOLS" className="dropbtn">
+                <option>Wood Cutter</option>
+                <option>Drilling</option>
+                <option>Cut-off Saw</option>
+                <option>Grinding</option>
+              </select>
+            </div>
 
-              <tr>
-                <td>Product ID:</td>
-                <td>
-                  <h1 className="id" style={{ fontSize: "20px" }}>
-                    {"P" + info}
-                  </h1>
-                </td>
-              </tr>
-              <tr>
-                <td>Company:</td>
-                <td>
-                  <select name="COMPANY">
-                    <option>Bosch</option>
-                    <option>Makita</option>
-                    <option>Dewalt</option>
-                    <option>Hitachi</option>
-                    <option>China Made</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
+            <div className="form-group">
+              <label htmlFor="MODELNO" className="form-label">Model Size:</label>
+              <input
+                type="number"
+                id="MODELNO"
+                name="MODELNO"
+                placeholder="Enter Size"
+                required
+              />
+            </div>
 
+            <div className="form-group">
+              <label htmlFor="MISSINGPARTS" className="form-label">Missing Parts:</label>
+              <input
+                type="text"
+                id="MISSINGPARTS"
+                name="MISSINGPARTS"
+                placeholder="Missing Parts"
+              />
+            </div>
 
-                <td>Model Size:</td>
-                <td>
-                  <input
-                    type="number"
-                    placeholder="Enter Size"
-                    name="MODELNO"
-                    required
-                  />
-                </td>
-              </tr>
-
-              <tr>
-
-                <td>Missing Parts:</td>
-                <td>
-                  <input
-                    type="text"
-                    name="MISSINGPARTS"
-                    placeholder="Missing Parts"
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td>Color:</td>
-                <td>
-                  <input type="color" name="COLOR" />
-                </td>
-
-              </tr>
-
-              <tr>
-                <td>Power Tool Type:</td>
-                <td>
-                  <select name="POWERTOOLS">
-                    <option>Wood Cutter</option>
-                    <option>Drilling</option>
-                    <option>Cut-off Saw</option>
-                    <option>Grinding</option>
-                  </select>
-                </td>
-
-              </tr>
-
-            </tbody>
-          </table>
-
-          <div id="service-footer">
-            <input
-              type="submit"
-              value="Submit"
-              className="submit"
-            />
+            <div className="form-group">
+              <label htmlFor="COLOR" className="form-label">Color:</label>
+              <input type="color" id="COLOR" name="COLOR" />
+            </div>
           </div>
         </div>
       </form>
-    </div>
   );
 };
 

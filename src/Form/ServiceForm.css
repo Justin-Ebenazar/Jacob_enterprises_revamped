@@ -3,29 +3,21 @@
 =================================================== */
 
 .tab-content{
-    animation:fadeSlide .4s ease;
+    perspective: 1000px;
 }
 
 .service_table_fan,
 .service_table_motor,
 .service_table_powertools{
-
     width:97%;
-
-    /* margin-top:20px; */
-
-    background:rgba(255,255,255,.02);
-
-    border:1px solid rgba(255,255,255,.05);
-
-    border-radius:18px;
-
+    height: 95%;
+    background:rgba(255,255,255,0);
+    border:1px solid rgba(0, 0, 0, 0.226);
     padding:10px;
-
     backdrop-filter:blur(15px);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.18);
+    margin-top: 7px;
+    border-radius: 12px;
+    /* box-shadow:0 10px 30px rgba(0,0,0,.18); */
 }
 
 
@@ -52,7 +44,7 @@
 
     background:transparent;
 
-    color:#ffffff;
+    color:#000000;
 
     font-size:20px;
 
@@ -331,29 +323,6 @@ input[type="number"]::-webkit-outer-spin-button{
 }
 
 
-/* ===================================================
-   ANIMATION
-=================================================== */
-
-@keyframes fadeSlide{
-
-from{
-
-    opacity:0;
-
-    transform:translateY(20px);
-
-}
-
-to{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
-
-}
 
 /* ===============================
    MOTOR FORM ONLY
@@ -513,10 +482,137 @@ to{
 
 .tab-content{
     display:flex;
-    align-items:center;
-    justify-content:center;
+    align-items:flex-start;
+    justify-content:left;
+    flex-direction:column;
     width: 100%;
     height: 100%;
-    background-color :var(--theme-color);
+    padding: 10px 0px 0px 7px;
+    /* background-color :var(--theme-color); */
+    /* background-color :red; */
     overflow: hidden;
+}
+
+/* Container substituting the table structure */
+.service-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Spacing between form fields */
+  width: 100%;
+}
+
+/* Individual wrapper for label + input stacking */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Spacing between label and input */
+  width: 100%;
+}
+
+/* Styled labels on top */
+.form-label {
+  font-size: 13px;
+  color: #94a3b8; /* Matching the muted secondary text from the dashboard */
+  font-weight: 500;
+}
+
+/* Preserving your original classes while enforcing uniform width blocks */
+.dropbtn,
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #e2e2e2;
+  border: none;
+  color: #000000;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.dropbtn:focus,
+.service-form input[type="text"]:focus {
+  border-color: #8b5cf6;
+}
+
+/* Product ID custom layout alignment */
+.id {
+  color: #a78bfa;
+  margin: 0;
+  padding: 4px 0;
+}
+
+/* Native color picker adjustments */
+.service-form input[type="color"] {
+  -webkit-appearance: none;
+  border: 2px solid #2d2d44;
+  background: #13131f;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.service-form input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 3px;
+}
+
+.service-form input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+h3{
+    color: #000000;
+}
+
+.form-specific-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    gap:5px;
+    padding: 0px 25px 0px 0px;
+}
+
+.form-specific-header p{
+    font-size: 12px;
+    font-weight: 400;
+    color: #a600ff;
+    padding: 2px 17px;
+    border-radius: 14px;
+    background-color: rgba(166, 0, 255, 0.1);
+    border: 1.55px dotted #a600ff;
+}
+
+#MODELNO,#MISSINGPARTS{
+    padding: 10px 12px;
+    background-color: #e2e2e2;
+    border: none;
+    border-radius: 2px;
+}
+
+.form-specific-header h3{
+    transform-origin: top center;
+    animation: odometerRoll 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.tab-content:not(:first-child){
+  /* opacity: 0; */
+  animation: fadeSlide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.12s;
+}
+
+@keyframes odometerRoll {
+  from {
+    opacity: 0;
+    /* Tilted backward and pushed slightly up in 3D space */
+    transform: rotateX(-90deg) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    /* Rolls forward into plain view */
+    transform: rotateX(0deg) translateY(0);
+  }
 }
