@@ -88,12 +88,12 @@ const iconLibrary = {
     </svg>
   ),
   "power-tools": (
-    <FaTools/>
+    <FaTools />
   )
 };
 
 const colors = ["#8b5cf6", "#a78bfa", "#c084fc", "#e879f9", "#6366f1", "#38bdf8"];
-const PRESETS_COUNT = 25;
+const PRESETS_COUNT = 75;
 
 export default function IconWaveCanvas({ iconType = "motor" }) {
   const [presets, setPresets] = useState([]);
@@ -101,35 +101,71 @@ export default function IconWaveCanvas({ iconType = "motor" }) {
   const containerRef = useRef(null);
 
   // Initialize and pre-calculate the coordinate matrix based on current screen dimensions
-  const initializePresetMatrix = () => {
-    // This dynamically reads the width/height of the exact div, falling back to window if not loaded yet
-    const w = containerRef.current ? containerRef.current.clientWidth : window.innerWidth;
-    const h = containerRef.current ? containerRef.current.clientHeight : window.innerHeight;
-    const matrix = [];
+ const initializePresetMatrix = () => {
+  if (!containerRef.current) return;
 
-    for (let i = 0; i < PRESETS_COUNT; i++) {
-      const segmentWidth = w / PRESETS_COUNT;
-      const baseStartX = i * segmentWidth + Math.random() * (segmentWidth * 0.5);
+  const w = containerRef.current.clientWidth;
+  const h = containerRef.current.clientHeight;
+  
+  const matrix = [];
 
-      matrix.push({
-        startX: baseStartX,
-        midX: baseStartX + (Math.random() * 80 - 40),
-        endX: baseStartX + (Math.random() * 120 - 60),
-        wavePeak : Math.random() * (h * 0.8) + (h * 0.1),
-        settleY: Math.random() * (h * 0.75) + h * 0.1,
-        size: Math.floor(Math.random() * (34 - 20 + 1)) + 20,
-        delay: i * 0.025 + Math.random() * 0.15,
-        duration: 5.3 + Math.random() * 0.5, // Your custom slow-motion duration
-        color: colors[i % colors.length],
-        spinStart: Math.random() * 360,
-        spinMid: Math.random() * 180 + 90,
-        spinEnd: Math.random() * 360,
-        scaleEnd: 0.55 + Math.random() * 0.4,
-        maxOpacity: 0.35 + Math.random() * 0.5,
-      });
-    }
-    setPresets(matrix);
-  };
+  // Define distribution parameters
+  const GOLDEN_ANGLE = 3.39996; 
+  const spacingX = w * 0.08; 
+  const spacingY = h * 0.12 ; 
+  const centerX = w / 2;
+  const centerY = h / 2;
+
+  // --- DYNAMIC WAVE PARAMETERS (Changes every time this runs!) ---
+  // 1. Random Frequency: Controls how many wave peaks form (between 0.8 and 2 full wave cycles)
+  const waveFrequency = ((0.8 + Math.random() * 1.2) * 2 * Math.PI) / w;
+  
+  // 2. Random Amplitude: Controls how tall/deep the wave is (between 12% and 24% of height)
+  const waveAmplitude = h * (0.12 + Math.random() * 0.12);
+  
+  // 3. Random Phase: Shifts the wave left or right so the crests land in different spots
+  const wavePhase = Math.random() * 2 * Math.PI;
+
+  // 4. Random Vertical Center: Shifts the overall wave baseline slightly up or down
+  const waveBaselineY = centerY + (Math.random() * (h * 0.15) - (h * 0.075));
+
+  for (let i = 0; i < PRESETS_COUNT; i++) {
+    const r = Math.sqrt(i + 0.5); 
+    const theta = i * GOLDEN_ANGLE;
+
+    // 1. Calculate base scattered position
+    const targetX = centerX + r * spacingX * Math.cos(theta);
+    const baseTargetY = waveBaselineY + r * spacingY * Math.sin(theta) * 0.4; // Scaled down center-stretch
+
+    // 2. Map targetX onto our dynamically randomized wave properties
+    const waveYOffset = Math.sin(targetX * waveFrequency + wavePhase) * waveAmplitude;
+
+    // Combine them to get a unique volumetric wave shape
+    const wavePeak = baseTargetY + waveYOffset;
+
+    // Start coordinates
+    const startX = targetX + (Math.random() * 40 - 20);
+    const midX = targetX + (Math.random() * 16 - 8);
+
+    const size = Math.floor(14 + (i % 3) * 3 + Math.random() * 4);
+
+    matrix.push({
+      startX,
+      midX,
+      wavePeak,
+      size,
+      // Dynamic left-to-right rolling delay based on the randomized start points
+      delay: (targetX / w) * 0.45 + Math.random() * 0.08, 
+      duration: 5.3 + Math.random() * 0.5,
+      color: colors[i % colors.length],
+      spinStart: Math.random() * 360,
+      spinMid: (i * 45) + (Math.random() * 60 - 30),
+      scaleEnd: 0.7 + (i % 4) * 0.08,
+      maxOpacity: 0.45 + Math.random() * 0.45,
+    });
+  }
+  setPresets(matrix);
+};
 
   // Run initialization on mount & handle window resizing cleanly
   useEffect(() => {
@@ -178,6 +214,7 @@ export default function IconWaveCanvas({ iconType = "motor" }) {
           {iconLibrary[activeIconKey]}
         </div>
       ))}
+      <div className="wave-overlay"></div>
     </div>
   );
 }

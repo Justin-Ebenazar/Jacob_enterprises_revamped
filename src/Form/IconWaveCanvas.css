@@ -1,4 +1,4 @@
-/* Container holds the canvas safely over the screen background */
+/* Canvas container */
 .wave-canvas {
   position: absolute;
   bottom: 0;
@@ -8,9 +8,28 @@
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
-  /* background-color: var(--theme-color); */
-  /* border: 1px solid red; */
 }
+
+/* Overlay applies gradient opacity to all content inside */
+.wave-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Gradient mask instead of solid background */
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0,0.5) 300%, rgba(64, 13, 79,1) 70%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 200% 200%;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0,0.5) 70%, rgba(64, 13, 79,1) 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%; 
+    border-radius: 20px;
+  background-color: rgb(64, 13, 79);
+  pointer-events: none; /* overlay doesn’t block interactions */
+}
+
 
 /* Individual particle settings */
 .wave-icon {

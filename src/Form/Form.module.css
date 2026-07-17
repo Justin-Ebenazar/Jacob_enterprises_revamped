@@ -46,16 +46,16 @@
 .customerCard {
   display: flex;
   flex-direction: column;
+  justify-content: top;
   align-items: center;
-  justify-content: center;
   width: 30%;
   height: 100%;
   background: rgb(64, 13, 79);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* border: 1px solid rgba(255, 255, 255, 0.05); */
   border-radius: 0 0 0 15px;
   padding: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); */
 }
 
 .navCard {
@@ -80,12 +80,12 @@
   display: grid;
   grid-template-columns: 145px fr;
   gap: 7px 2px;
-  border: 1px solid rgba(255, 255, 255, 1);
+  /* border: 1px solid rgba(255, 255, 255, 1); */
   padding: 20px 10px;
   padding-top : 45px;
   border-radius: 10px;
   position: relative;
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7);
+    /* box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7); */
   /* background-color: rgb(158, 48, 48); */
 }
 
