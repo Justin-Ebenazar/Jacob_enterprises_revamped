@@ -211,6 +211,12 @@
   border-radius: 7px;
 }
 
+input[type="date"]::placeholder {
+  color: #888;        /* your desired color */
+  opacity: 1;         /* ensure full visibility */
+}
+
+
 .infoInput:focus {
   border: 1px solid var(--primary-color);
   border-radius: 7px;

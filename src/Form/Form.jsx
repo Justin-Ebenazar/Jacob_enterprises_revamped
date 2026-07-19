@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import formstyle from "./Form.module.css";
-import CustomDatePicker from "./dat";
+import CustomDateInput from "./dat";
 import Fan from "./Fan";
 import Motor from "./Motor";
 import PowerTools from "./PowerTools";
@@ -16,7 +16,7 @@ import { FaUser } from "react-icons/fa";
 import { TbUser } from "react-icons/tb";
 import IconWaveCanvas from "./IconWave";
 
-const Form = () => {
+const Form = ({ formOverlay }) => {
   const [activeTab, setActiveTab] = useState("fan");
   const [sliderStyle, setSliderStyle] = useState({
     left: 0,
@@ -24,7 +24,6 @@ const Form = () => {
   });
 
   const navRef = useRef(null);
-
   // Move the slider to the active tab
   useEffect(() => {
     const activeItem = navRef.current?.querySelector('[data-active="true"]');
@@ -36,14 +35,21 @@ const Form = () => {
       });
     }
   }, [activeTab]);
+  const formRef = useRef(null);
 
+  const handleClickOutside = (formRef) => {
+		if (formRef.current) {
+			// scale the form element to 0
+			formRef.current.style.transform = 'scale(0)';
+		}	
+	}
   return (
-	<dialog className={formstyle.modalOverlay}>
+	<dialog className={formstyle.modalOverlay} ref={formRef}>
 		<div className={formstyle.formContainer}>
 			<div className={formstyle.formHeader}>
 				<div className={formstyle.formControls}>
-					<MdClose className={formstyle.closeIcon} />
-					<FaMinus className={formstyle.minimizeIcon} />
+					<MdClose className={formstyle.closeIcon} onClick={() => formOverlay(false)} />
+					<FaMinus className={formstyle.minimizeIcon} onClick={handleClickOutside(formRef)} />
 				</div>
 				Service Form
 			</div>
@@ -76,7 +82,8 @@ const Form = () => {
 						</div>
 						<div className={formstyle.inputHolder}>
 							{/* <CustomDatePicker className={formstyle.infoInput} /> */}
-							<input type="date" className={formstyle.infoInput} id="date" />
+							<CustomDateInput className={formstyle.infoInput} />
+							{/* <input type="date" className={formstyle.infoInput} id="date" /> */}
 						</div>
 					</div>
 					<IconWaveCanvas iconType={activeTab} />

@@ -1,0 +1,40 @@
+.dateInputWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.customDateInput {
+  position: relative;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #4b5563;
+  border-radius: 6px;
+  background-color: #1f2937;
+  color: #ffffff; /* Default text color for the selected date */
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* 1. Hide browser's default 'dd/mm/yyyy' indicators when placeholder is active */
+.customDateInput.showPlaceholder {
+  color: transparent;
+}
+
+/* 2. Create the custom placeholder overlay */
+.customDateInput.showPlaceholder::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a78bfa; /* Stylize your custom placeholder color here! */
+  pointer-events: none; /* Let clicks pass through to the native calendar */
+}
+
+/* 3. Style the default calendar picker icon */
+.customDateInput::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.8); /* Inverts the icon to match dark mode themes */
+}

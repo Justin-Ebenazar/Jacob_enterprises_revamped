@@ -36,6 +36,8 @@ const App = () => {
 		});
 	}, [theme]);
 
+	const [formOverlay, setFormOverlay] = useState(false);
+
   return (
     <div className={style.app}>
 		<Header />
@@ -45,8 +47,8 @@ const App = () => {
 				{/* <Route path="/form" element={<Form />} />
 				<Route path="/floatingicon" element={<Floatingicon />} /> */}
 			</Routes>
-			<Form />
-			<Floatingicon switcher={setTheme} themes={{ light: themes.light, dark: themes.dark }} />
+			<Form formOverlay={setFormOverlay} />
+			<Floatingicon onClick={() => setFormOverlay(!formOverlay)} switcher={setTheme} themes={{ light: themes.light, dark: themes.dark }} />
 		</BrowserRouter>
     </div>
   );

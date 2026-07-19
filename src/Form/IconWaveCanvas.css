@@ -1,4 +1,3 @@
-/* Canvas container */
 .wave-canvas {
   position: absolute;
   bottom: 0;
@@ -10,67 +9,119 @@
   overflow: hidden;
 }
 
-/* Overlay applies gradient opacity to all content inside */
 .wave-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  
-  /* Gradient mask instead of solid background */
   -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0,0.5) 300%, rgba(64, 13, 79,1) 70%);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 200% 200%;
   mask-image: linear-gradient(to top, rgba(0, 0, 0,0.5) 70%, rgba(64, 13, 79,1) 100%);
   mask-repeat: no-repeat;
   mask-size: 100% 100%; 
-    border-radius: 20px;
+  border-radius: 20px;
   background-color: rgb(64, 13, 79);
-  pointer-events: none; /* overlay doesn’t block interactions */
+  pointer-events: none;
 }
 
-
-/* Individual particle settings */
 .wave-icon {
   position: absolute;
   top: 0;
   left: 0; 
   transform-origin: center;
-  opacity: 0;
   pointer-events: none;
-  /* Applies your preset-driven values. Uses forwards to lock the final frame */
+  font-size: var(--size);
+  color: var(--color);
+}
+
+.wave-icon.spawning {
+  opacity: 0;
   animation: staticWaveSurge var(--duration) cubic-bezier(0.16, 1, 0.3, 1) var(--delay) forwards;
 }
 
-.wave-icon svg {
-  width: var(--size);
-  height: var(--size);
-  fill: var(--color);
-  filter: drop-shadow(0 4px 10px rgba(139, 92, 246, 0.15));
+.wave-icon.morphing {
+  opacity: var(--max-opacity);
+  transition: transform 2.5s cubic-bezier(0.37, 0, 0.63, 1), color 1.5s ease-in-out;
+  transform: translate3d(var(--mid-x), var(--wave-peak), 0) rotate(var(--spin-mid)) scale(var(--scale-end));
 }
 
-/* --- YOUR CUSTOM KEYFRAME TIMING --- */
-@keyframes staticWaveSurge {
+/* --- GPU HARDWARE ACCELERATED BUTTERY IDLE BREATHING --- */
+/* Nesting this inside the container element prevents it from disrupting the core morphing logic */
+.idle-breathing-wrapper {
+  width: 100%;
+  height: 100%;
+  animation: idleFloat var(--idle-time) ease-in-out var(--idle-delay) infinite alternate;
+}
+
+.icon-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.icon-layer.incoming.fade-in {
+  animation: smoothGlyphFadeIn 3.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.icon-layer.outgoing.fade-out {
+  animation: smoothGlyphFadeOut 3.0s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.wave-icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+/* --- DESIGN POLISH FOR DETAILED CUSTOM MOTOR SVG --- */
+.wave-icon svg.custom-motor-svg {
+  width: calc(var(--size) * 1.6);
+  height: auto;
+  fill: none;
+  /* Glowing drop-shadow brightens line weight visibility against dark backgrounds */
+  filter: drop-shadow(0 2px 6px var(--color)); 
+}
+
+.wave-icon .motor-bg-plate {
+  fill: rgba(255, 255, 255, 0.06);
+  stroke: none;
+}
+
+/* --- MOTION INTERPOLATIONS --- */
+@keyframes idleFloat {
   0% {
-    transform: translate3d(var(--start-x), 105vh, 0) rotate(var(--spin-start)) scale(0.1);
-    opacity: 0;
+    transform: translate3d(-8px, -4px, 0) rotate(-4deg);
   }
-  15% {
-    opacity: var(--max-opacity);
-  }
-  45% {
-    /* The high cresting apex point of the wave vector layout */
-    transform: translate3d(var(--mid-x), var(--wave-peak), 0) rotate(var(--spin-mid)) scale(1.15);
-  }
-  75% {
-    /* Holds perfectly rigid at the apex position */
-    transform: translate3d(var(--mid-x), var(--wave-peak), 0) rotate(var(--spin-mid)) scale(1.15);
-    opacity: var(--max-opacity);
+  50% {
+    transform: translate3d(4px, 6px, 0) rotate(2deg);
   }
   100% {
-    /* Stays frozen cleanly to complete the slow holding sequence */
-    transform: translate3d(var(--mid-x), var(--wave-peak), 0) rotate(var(--spin-mid)) scale(1.15);
-    opacity: var(--max-opacity);
+    transform: translate3d(8px, -5px, 0) rotate(5deg);
   }
+}
+
+@keyframes smoothGlyphFadeIn {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); filter: blur(3px); }
+  40% { opacity: 0.3; }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0px); }
+}
+
+@keyframes smoothGlyphFadeOut {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0px); }
+  60% { opacity: 0.1; filter: blur(2px); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); filter: blur(5px); }
+}
+
+@keyframes staticWaveSurge {
+  0% { transform: translate3d(var(--start-x), 105vh, 0) rotate(var(--spin-start)) scale(0.1); opacity: 0; }
+  15% { opacity: var(--max-opacity); }
+  45% { transform: translate3d(var(--mid-x), var(--wave-peak), 0) rotate(var(--spin-mid)) scale(var(--scale-end)); }
+  100% { transform: translate3d(var(--mid-x), var(--wave-peak), 0) rotate(var(--spin-mid)) scale(var(--scale-end)); opacity: var(--max-opacity); }
 }

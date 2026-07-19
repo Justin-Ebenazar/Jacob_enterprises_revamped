@@ -1,9 +1,18 @@
 import React from "react";
 import "./ServiceForm.css";
-
+import SonomaDropdown from "./CustomSelect";
+import { useState } from "react";
 const Fan = () => {
   const info = 101; // Sample Product ID
+  const fanOptions = [
+    "Ceiling Fan", 
+    "Table Fan", 
+    "Almonard Pedestal", 
+    "Almonard Wall Mounting"
+  ];
 
+  // 2. State to track the currently selected value
+  const [selectedFan, setSelectedFan] = useState("Almonard Pedestal");
   return (
     // <div className="machine-form-master" >
       <form action="/fan_submit" className="tab-content" method="post">
@@ -15,12 +24,11 @@ const Fan = () => {
           <div className="service-form">
             <div className="form-group">
               <label htmlFor="FANTYPE" className="form-label">Fan Type:</label>
-              <select name="FANTYPE" id="FANTYPE" className="dropbtn">
-                <option value="Ceiling Fan">Ceiling Fan</option>
-                <option value="Table Fan">Table Fan</option>
-                <option value="Almonard Pedestal">Almonard Pedestal</option>
-                <option value="Almonard Wall Mounting">Almonard Wall</option>
-              </select>
+              <SonomaDropdown 
+                list={fanOptions} 
+                value={selectedFan} 
+                onChange={(newValue) => setSelectedFan(newValue)} 
+              />
             </div>
 
             <div className="form-group">
